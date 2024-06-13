@@ -50,6 +50,8 @@ class GPS
 {
     private:
     IMessage<T> * _msg ;
+    //example for bad design 
+    UART<T> uart ;
 
     public:
     GPS(IMessage<T> * msg)
@@ -62,14 +64,26 @@ class GPS
         _msg->SendMessage("Lat location: " , Lat);
         _msg->SendMessage("Lon location: " , Lon);
     }
+
+/*exmaple for bad design */
+    void Send_Location_with_bad_Design(T Lat , T Lon)
+    {
+        uart.SendMessage("Lat location: " , Lat);
+        uart.SendMessage("Lon location: " , Lon);
+    }
+    
+
 };
 
 
 int main()
 {
+    //select  the protocol to inject in your high level class 
 SPI<double> spi;
+//using high level class with low level task class injection using constructor  injection 
 GPS<double> gps1(&spi) ;
 
+//send location without any care about how to send 
 gps1.Send_Location(31.2562 , 30.2506);
 
     return  0;
