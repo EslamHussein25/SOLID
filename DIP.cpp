@@ -1,6 +1,6 @@
 #include <iostream>
 
-
+//templated class for interfcing between high level class and low level class 
 template<typename T>
 class IMessage
 {
