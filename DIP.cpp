@@ -85,7 +85,7 @@ GPS<double> gps1(&spi) ;
 
 //send location without any care about how to send 
 gps1.Send_Location(31.2562 , 30.2506);
-
+gps1.Send_Location_with_bad_Design(31.2562 , 30.2506);
     return  0;
 }
 
