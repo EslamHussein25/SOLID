@@ -1,5 +1,6 @@
 #include <iostream>
 
+//interface class 
 //templated class for interfcing between high level class and low level class 
 template<typename T>
 class IMessage
@@ -12,6 +13,7 @@ class IMessage
 
 };
 
+/******************low level classes ***********************/
 //concret class for UART : low level protocol to implemnt some low level functions : send messages 
 template<typename T>
 class UART : public IMessage<T>
@@ -40,6 +42,9 @@ class SPI : public IMessage<T>
 
 //and we can add any other protocol here without any problems in high level classes 
 
+
+//high level depend on interface class for perform low tasks with abstraction methods 
+//here the injection using constructor injection method 
 template<typename T>
 class GPS
 {
