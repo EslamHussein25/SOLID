@@ -12,7 +12,7 @@ class IMessage
 
 };
 
-
+//concret class for UART : low level protocol to implemnt some low level functions : send messages 
 template<typename T>
 class UART : public IMessage<T>
 {
@@ -25,7 +25,7 @@ class UART : public IMessage<T>
         }
 };
 
-
+//concret class for SPI : low level protocol to implemnt some low level functions : send messages 
 template<typename T>
 class SPI : public IMessage<T>
 {
@@ -38,6 +38,7 @@ class SPI : public IMessage<T>
         }
 };
 
+//and we can add any other protocol here without any problems in high level classes 
 
 template<typename T>
 class GPS
