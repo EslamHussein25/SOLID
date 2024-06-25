@@ -21,8 +21,12 @@ public:
         std::cout<<"\nWorker Category\n";
         return Hours * 60;
     }
-
-
+//overloading if need min 
+    virtual int Cal_Salary(int Hours , int min)  // also we may make this method abstract method to make this class abstract and use it
+    {
+        std::cout<<"\nWorker Category\n";
+        return Hours * 60;
+    }
 };
 
 class Team_Leader_category : public Worker
@@ -30,10 +34,10 @@ class Team_Leader_category : public Worker
 
 public:
 
-int Cal_Salary(int Hours) 
+int Cal_Salary(int Hours , int min) override
 {
     std::cout<<"\nLeader Category\n";
-    return Hours * 100 ;
+    return Hours * 100 * min;
 }
 
 };
@@ -58,7 +62,7 @@ int Cal_Salary(int Hours) override
 int main()
 {
     Worker * ptr_worker ;
-    Worker  worker ;
+    Worker  worker;
     Team_Leader_category leader ;
     Manager_category manager ;
     int Hours ;
@@ -90,6 +94,8 @@ int main()
     {
         std::cout<<"Your Salary is: " << ptr_worker->Cal_Salary(Hours) << "  \n  \n \n Thank you \n";
     }
+    ptr_worker = &leader ;
+            std::cout<<"now" << ptr_worker->Cal_Salary(Hours , 40) << "  \n  \n \n Thank you \n";
 
     
     return 0;
